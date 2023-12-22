@@ -1,15 +1,3 @@
-// $(document).ready(function(){
-//     $(document).on("click", ".num", function(){
-//         var number = $(this).val();
-//         $(".display").text(number)
-//     })
-// })
-
-// $(document).keypress(function(event){
-//     $(".display").text(event.key)
-// })
-
-
 $(document).ready(function () {
     var result = 0;
     var prevEntry = 0;
@@ -57,8 +45,36 @@ $(document).ready(function () {
             } else {
                 currentEntry = "Error"
             }
+        } else if (buttonPressed === "x^2") {
+            var inputNumber = parseFloat(currentEntry);
 
-        } else if (buttonPressed === "=") {
+            if (!isNaN(inputNumber) && inputNumber >= 0) {
+                currentEntry = Math.pow(inputNumber,2).toString();
+
+            } else {
+                currentEntry = "Error"
+            }
+        } else if (buttonPressed === "!") {
+            var inputNumber = parseFloat(currentEntry);
+
+            if (!isNaN(inputNumber) && inputNumber >= 0) {
+                let fact = 1;
+                for (let i =1; i<= inputNumber; i++){
+                    fact *= i;
+
+                }
+                currentEntry = fact.toString;
+
+            } else {
+                currentEntry = "Error"
+            }
+
+        }else if (buttonPressed === "pi"){
+            currentEntry = 3.14;
+        }else if (buttonPressed === "+/-"){
+            currentEntry = (-1) * currentEntry
+        }
+        else if (buttonPressed === "=") {
             currentEntry = operate(prevEntry, currentEntry, operation).toString();
             operation = null;
         }
